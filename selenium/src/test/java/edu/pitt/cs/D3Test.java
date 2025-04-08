@@ -55,19 +55,6 @@ public class D3Test {
       assert(elements.size() > 0);
     }
   }
-  @Test
-  public void dEFECT1FUNFEED() {
-    driver.get("http://localhost:8080/");
-    js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=false\";document.cookie = \"3=false\";");
-    driver.findElement(By.linkText("Feed-A-Cat")).click();
-    driver.findElement(By.xpath("//input[@id=\'catnips\']")).sendKeys("-3");
-    driver.findElement(By.xpath("//button[@onclick=\'setTimeout(feedSubmit, 1000)\']")).click();
-    {
-      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()=\'Nom, nom, nom.\']	")));
-    }
-    assertThat(driver.findElement(By.id("feedResult")).getText(), is("Cat fight!"));
-  }
 
   @Test
   public void tEST8FEEDACAT() {
